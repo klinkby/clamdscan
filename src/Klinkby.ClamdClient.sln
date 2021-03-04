@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Klinkby.Clam", "Klinkby.Clam\Klinkby.Clam.csproj", "{5C33D0DE-F4F3-47D3-BDE1-E70A786C70B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Klinkby.ClamTests", "Klinkby.ClamTests\Klinkby.ClamTests.csproj", "{CCAE1F85-D404-4C6F-A4AD-F4AE50321A90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C33D0DE-F4F3-47D3-BDE1-E70A786C70B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C33D0DE-F4F3-47D3-BDE1-E70A786C70B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C33D0DE-F4F3-47D3-BDE1-E70A786C70B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C33D0DE-F4F3-47D3-BDE1-E70A786C70B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAE1F85-D404-4C6F-A4AD-F4AE50321A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAE1F85-D404-4C6F-A4AD-F4AE50321A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAE1F85-D404-4C6F-A4AD-F4AE50321A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAE1F85-D404-4C6F-A4AD-F4AE50321A90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB8CD8AC-6C43-4982-85FF-478A9DE935F8}
+	EndGlobalSection
+EndGlobal
