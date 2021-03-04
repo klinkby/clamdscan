@@ -17,9 +17,9 @@ namespace Klinkby.Clam
             base(() => Task.Factory.StartNew(() => taskFactory()).Unwrap())
         { }
 
-        public TaskAwaiter<T> GetAwaiter() 
-        { 
-            return Value.GetAwaiter(); 
+        public TaskAwaiter<T> GetAwaiter()
+        {
+            return Value.GetAwaiter();
         }
     }
 }

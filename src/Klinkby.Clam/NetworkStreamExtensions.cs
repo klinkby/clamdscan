@@ -25,7 +25,7 @@ namespace Klinkby.Clam
 
         internal static async Task<string> ReceiveTextAsync(this NetworkStream stream)
         {
-            using (var sr = new StreamReader(stream, TextEncoding, false, BufferSize))
+            using (var sr = new StreamReader(stream, TextEncoding, false, BufferSize, true))
             {
                 return await sr.ReadToEndAsync();
             }
