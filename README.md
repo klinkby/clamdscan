@@ -45,4 +45,6 @@ For practical reasons the `Shutdown` method is inhibited, as it terminates the c
 tests without a daemon. 
 
 ## Known issues
-Unsupported commands are RAWSCAN as it is deprecated by Clam, and pending are FILDES (e.g. STDIN) and IDSESSION, END (for batching). If you need any of the latter, I would be quite happy to take pull requests.
+Unsupported commands are `RAWSCAN` as it is deprecated by Clam, and pending are `FILDES` (e.g. STDIN) and `IDSESSION`, `END`  (for batching). 
+
+If you need any of the latter, I would be quite happy to take pull requests. :-)
