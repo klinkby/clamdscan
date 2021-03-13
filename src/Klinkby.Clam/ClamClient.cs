@@ -35,7 +35,8 @@ namespace Klinkby.Clam
             {
                 var newClient = new TcpClient();
                 this.logger.Log(LogLevel.Information, $"Connect to {host}:{port}");
-                await newClient.ConnectAsync(host, port);
+                await newClient.ConnectAsync(host, port)
+                               .ConfigureAwait(false);
                 return newClient;
             });
         }
@@ -51,7 +52,8 @@ namespace Klinkby.Clam
             {
                 var newClient = new TcpClient();
                 this.logger.Log(LogLevel.Information, $"Connect to ip:{port}");
-                await newClient.ConnectAsync(ipAddresses, port);
+                await newClient.ConnectAsync(ipAddresses, port)
+                               .ConfigureAwait(false);
                 return newClient;
             });
         }
@@ -71,17 +73,21 @@ namespace Klinkby.Clam
                 Debug.Assert(stream.CanWrite);
                 string formattedCommand = $"z{command}\0";
                 logger.Log(LogLevel.Trace, "Send command");
-                await stream.SendTextAsync(formattedCommand);
+                await stream.SendTextAsync(formattedCommand)
+                            .ConfigureAwait(false);
                 if (null != data)
                 {
                     Debug.Assert(data.CanRead);
                     logger.Log(LogLevel.Trace, "Send data");
-                    await stream.SendDataAsync(data, client.SendBufferSize);
+                    await stream.SendDataAsync(data, client.SendBufferSize)
+                                .ConfigureAwait(false);
                 }
                 logger.Log(LogLevel.Trace, "Flush");
-                await stream.FlushAsync();
+                await stream.FlushAsync()
+                            .ConfigureAwait(false);
                 logger.Log(LogLevel.Trace, "Receive response");
-                string response = await stream.ReceiveTextAsync();
+                string response = await stream.ReceiveTextAsync()
+                                              .ConfigureAwait(false);
                 string[] formattedResponse = response.Split(new string[] { "\0", "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 Debug.Assert(client.Connected);
                 return formattedResponse;
