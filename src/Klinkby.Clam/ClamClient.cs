@@ -14,7 +14,7 @@ namespace Klinkby.Clam
     /// <summary>
     /// Non-blocking TCP client for ClamAV daemon
     /// </summary>
-    public class ClamClient : IDisposable, IClamClient
+    public class ClamClient : IClamClient
     {
         const string DefaultHost = "localhost";
         const int DefaultTcpPort = 3310;
