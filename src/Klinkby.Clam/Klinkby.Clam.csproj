@@ -12,6 +12,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <Version>1.0.2</Version>
+    <ProjectGuid>{e5ee46e2-1cb9-44f9-929d-970082772e92}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
