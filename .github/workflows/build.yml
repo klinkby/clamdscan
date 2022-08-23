@@ -47,9 +47,9 @@ jobs:
         shell: powershell
         run: |
           cd .\src
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet restore
           dotnet build --configuration Release --no-restore
           dotnet test --no-restore --verbosity normal --collect "Code Coverage"
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          ..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
