@@ -47,8 +47,8 @@ jobs:
         shell: powershell
         run: |
           cd .\src
-          rm TestResults\* -ErrorAction SilentlyContinue
-          ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.coverageReportPaths=".\TestResults\**\*.xml"        
+          rm TestResults\* -Force -Recurse --ErrorAction SilentlyContinue
+          ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.coverageReportPaths="TestResults\**\coverage.opencover.xml"        
           dotnet restore
           dotnet build --configuration Release --no-restore
           dotnet test -r TestResults --no-restore --no-build --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
