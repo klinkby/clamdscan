@@ -53,4 +53,4 @@ Unsupported commands are `RAWSCAN` as it is deprecated by Clam, and pending are 
 If you need any of the latter, I would be quite happy to take pull requests. :-)
 
 # Usage in REST API
-Please see https://github.com/klinkby/clamdscan-rest for a .NET5 Web API application that use this library. 
+Please see https://github.com/klinkby/clamdscan-rest for a .NET6 Web API application that use this library. 
