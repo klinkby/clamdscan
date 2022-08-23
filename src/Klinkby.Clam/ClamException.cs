@@ -2,6 +2,7 @@
 
 namespace Klinkby.Clam
 {
+    [Serializable]
     public class ClamException : Exception
     {
         public ClamException() { }

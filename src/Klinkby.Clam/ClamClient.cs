@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Klinkby.Clam
@@ -14,11 +13,10 @@ namespace Klinkby.Clam
     /// <summary>
     /// Non-blocking TCP client for ClamAV daemon
     /// </summary>
-    public class ClamClient : IClamClient
+    public sealed class ClamClient : IClamClient
     {
         const string DefaultHost = "localhost";
         const int DefaultTcpPort = 3310;
-        private static readonly Encoding TextEncoding = Encoding.ASCII;
         private readonly AsyncLazy<TcpClient> connectedClient;
         private readonly ILogger logger;
 
@@ -58,12 +56,17 @@ namespace Klinkby.Clam
             });
         }
 
-        public async Task<IReadOnlyList<string>> ExecuteCommandAsync(string command, Stream data = null)
+        public Task<IReadOnlyList<string>> ExecuteCommandAsync(string command, Stream data = null)
         {
             if (command is null)
             {
                 throw new ArgumentNullException(nameof(command));
             }
+            return ExecuteCommandInternalAsync(command, data);
+        }
+
+        private async Task<IReadOnlyList<string>> ExecuteCommandInternalAsync(string command, Stream data)
+        { 
             using (logger.BeginScope($"Execute {command}"))
             {
 

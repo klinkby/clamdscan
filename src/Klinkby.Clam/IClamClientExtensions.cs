@@ -18,34 +18,37 @@ RAWSCAN
     /// </summary>
     public static class IClamClientExtensions
     {
-        public async static Task PingAsync(this IClamClient client)
+        public static Task PingAsync(this IClamClient client)
         {
             if (client is null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
-            (await client.ExecuteCommandAsync("PING")).Assert("PONG");
+            return client.ExecuteCommandAsync("PING")
+                         .ContinueWith(t => t.Result.Assert("PONG"));
         }
 
-        public async static Task<string> VersionAsync(this IClamClient client)
+        public static Task<string> VersionAsync(this IClamClient client)
         {
             if (client is null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
-            return (await client.ExecuteCommandAsync("VERSION")).ParseSingle();
+            return client.ExecuteCommandAsync("VERSION")
+                         .ContinueWith(t => t.Result.ParseSingle());
         }
 
-        public async static Task<IDictionary<string, string>> StatsAsync(this IClamClient client)
+        public static Task<IDictionary<string, string>> StatsAsync(this IClamClient client)
         {
             if (client is null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
-            return (await client.ExecuteCommandAsync("STATS")).ParseMultiple();
+            return client.ExecuteCommandAsync("STATS")
+                         .ContinueWith(t => t.Result.ParseMultiple());
         }
 
-        public async static Task InstreamAsync(this IClamClient client, Stream data)
+        public static Task InstreamAsync(this IClamClient client, Stream data)
         {
             if (client is null)
             {
@@ -55,25 +58,28 @@ RAWSCAN
             {
                 throw new ArgumentNullException(nameof(data));
             }
-            (await client.ExecuteCommandAsync("INSTREAM", data)).Assert("OK");
+            return client.ExecuteCommandAsync("INSTREAM", data)
+                         .ContinueWith(t => t.Result.Assert("OK"));
         }
 
-        public async static Task ReloadAsync(this IClamClient client)
+        public static Task ReloadAsync(this IClamClient client)
         {
             if (client is null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
-            (await client.ExecuteCommandAsync("RELOAD")).Assert("RELOADING");
+            return client.ExecuteCommandAsync("RELOAD")
+                         .ContinueWith(t => t.Result.Assert("RELOADING"));
         }
 
-        public async static Task ShutdownAsync(this IClamClient client)
+        public static Task ShutdownAsync(this IClamClient client)
         {
             if (client is null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
-            (await client.ExecuteCommandAsync("SHUTDOWN")).Assert("");
+            return client.ExecuteCommandAsync("SHUTDOWN")
+                         .ContinueWith(t => t.Result.Assert(""));
         }
 
         public static Task ScanAsync(this IClamClient client, string path)
@@ -96,7 +102,7 @@ RAWSCAN
             return ScanAsync(client, "ALLMATCHSCAN", path);
         }
 
-        private async static Task ScanAsync(this IClamClient client, string command, string path)
+        private static Task ScanAsync(this IClamClient client, string command, string path)
         {
             if (client is null)
             {
@@ -106,7 +112,8 @@ RAWSCAN
             {
                 throw new ArgumentException($"'{nameof(path)}' cannot be null or empty", nameof(path));
             }
-           (await client.ExecuteCommandAsync($"{command} {path}")).Assert("OK");
+           return client.ExecuteCommandAsync($"{command} {path}")
+                        .ContinueWith(t => t.Result.Assert("OK"));
         }
     }
 }
