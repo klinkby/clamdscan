@@ -3,6 +3,7 @@ Non-blocking .NET Standard client for ClamAV.
 Nuget available at https://www.nuget.org/packages/Klinkby.Clam
 
 [![Build](https://github.com/klinkby/clamdscan/actions/workflows/build.yml/badge.svg)](https://github.com/klinkby/clamdscan/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=klinkby_clamdscan&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=klinkby_clamdscan)
 
 ## ClamAV?
 [ClamAV](https://www.clamav.net/) is an open source antivirus engine for 
