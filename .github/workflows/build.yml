@@ -51,6 +51,6 @@ jobs:
           ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="TestResults/"
           dotnet restore
           dotnet build --configuration Release --no-restore
-          dotnet test -r TestResults --no-restore --collect:"XPlat Code Coverage"
+          dotnet test -r TestResults --no-restore --collect:"XPlat Code Coverage" /p:CollectCoverage=true
           ..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
