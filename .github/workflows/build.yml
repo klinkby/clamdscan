@@ -48,9 +48,9 @@ jobs:
         run: |
           cd .\src
           rm TestResults\* -ErrorAction SilentlyContinue
-          ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="TestResults/"
+          ..\.sonar\scanner\dotnet-sonarscanner begin /k:"klinkby_clamdscan" /o:"klinkby" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths="TestResults\**\coverage.cobertura.xml"        
           dotnet restore
           dotnet build --configuration Release --no-restore
-          dotnet test -r TestResults --no-restore --collect:"XPlat Code Coverage" /p:CollectCoverage=true
+          dotnet test -r TestResults --no-restore --collect:"XPlat Code Coverage"
           ..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
