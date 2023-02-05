@@ -11,7 +11,7 @@
     <Description>Non-blocking .NET Standard client for on-demand scanning using ClamAV daemon</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <ProjectGuid>{e5ee46e2-1cb9-44f9-929d-970082772e92}</ProjectGuid>
   </PropertyGroup>
 
